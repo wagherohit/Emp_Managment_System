@@ -84,7 +84,7 @@ const UserData = () => {
                   <tr >
                     <td scope='row'>{val.userName}</td>
                     <td>{val.userEmail}</td>
-                    <td><img src={`http://localhost:3000/${val.image}`} width={50} className='img-fluid' alt="" /></td>
+                    <td><img src={`${BASE_URL}/${val.image}`} width={50} className='img-fluid' alt="" /></td>
                     <td>{val.userPhone}</td>
                     <td>{val.userGender}</td>
                     <td>{val.userDepartment}</td>
