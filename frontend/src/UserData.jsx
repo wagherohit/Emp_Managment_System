@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 const UserData = () => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL
+
   const nav = useNavigate()
 
   const [data, setData] = useState([])
@@ -11,7 +13,7 @@ const UserData = () => {
   const getData = async()=>{
     try{
 
-      const response = await axios.get("http://localhost:3000/api/userData")
+      const response = await axios.get(`${BASE_URL}/api/userData`)
       console.log(response.data.data)
       setData(response.data.data)
 
@@ -26,7 +28,7 @@ const UserData = () => {
   const deleteuser= async(id)=>{
          try{
 
-          await axios.delete(`http://localhost:3000/api/delete/${id}`)
+          await axios.delete(`${BASE_URL}/api/delete/${id}`)
           alert('data deleted Succesfully')
 
           const result = data.filter((val)=>val._id != id)

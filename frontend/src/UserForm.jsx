@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const UserForm = () => {
+     const BASE_URL = import.meta.env.VITE_BACKEND_URL
 
     const nav = useNavigate()
 
@@ -35,7 +36,7 @@ const UserForm = () => {
       formData.append("userAddress", userAddress)
       formData.append("userIspermanent", userIspermanent)
       formData.append("image", image)
-            const response = await axios.post("http://localhost:3000/api/register",formData)
+            const response = await axios.post(`${BASE_URL}/api/register`,formData)
             alert(response.data.message)
             nav('/userData')
 

@@ -5,6 +5,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 const Edit = () => {
     const {id} = useParams()
     const nav = useNavigate()
+    const BASE_URL = import.meta.env.VITE_BACKEND_URL
+
 
          const [userName, setUserName] = useState('')
          const [userEmail, setUserEmail] = useState('')
@@ -20,7 +22,7 @@ const Edit = () => {
      
     const getData = async()=>{
         try{
-            const response = await axios.get(`http://localhost:3000/api/userData/${id}`)
+            const response = await axios.get(`${BASE_URL}/api/userData/${id}`)
             const u = response.data.data
             setUserName(u.userName)
       setUserEmail(u.userEmail)
@@ -61,7 +63,7 @@ const Edit = () => {
 
 
 
-            const response = await axios.put(`http://localhost:3000/api/update/${id}`,formData)
+            const response = await axios.put(`${BASE_URL}/api/update/${id}`,formData)
             alert(response.data.message)
 
              nav('/userData')

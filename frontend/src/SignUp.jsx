@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL
+
 
     const nav = useNavigate()
 
@@ -14,7 +16,7 @@ const SignUp = () => {
           e.preventDefault()
           try{
             const formData = {userName,userEmail,userPassword}
-            const response = await axios.post('http://localhost:3000/api/save',formData)
+            const response = await axios.post(`${BASE_URL}/api/save`,formData)
             alert(response.data.message)
             nav('/login')
 
